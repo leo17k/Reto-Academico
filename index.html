@@ -146,31 +146,37 @@ button:hover {
         let score = 0;
 
         function checkGuess() {
-            // Leer valores de la matriz
-            const a = parseFloat(document.getElementById("cell-0-0").value) || 0;
-            const b = parseFloat(document.getElementById("cell-0-1").value) || 0;
-            const c = parseFloat(document.getElementById("cell-1-0").value) || 0;
-            const d = parseFloat(document.getElementById("cell-1-1").value) || 0;
+    // Leer valores de la matriz
+    const a = parseFloat(document.getElementById("cell-0-0").value) || 0;
+    const b = parseFloat(document.getElementById("cell-0-1").value) || 0;
+    const c = parseFloat(document.getElementById("cell-1-0").value) || 0;
+    const d = parseFloat(document.getElementById("cell-1-1").value) || 0;
 
-            // Calcular el determinante
-            const determinant = (a * d) - (b * c);
+    // Calcular el determinante
+    const determinant = (a * d) - (b * c);
 
-            // Leer la respuesta del jugador
-            const guess = parseFloat(document.getElementById("guess").value) || 0;
+    // Leer la respuesta del jugador
+    const guess = parseFloat(document.getElementById("guess").value) || 0;
 
-            // Comprobar la respuesta
-            const resultElement = document.getElementById("result");
-            if (guess === determinant) {
-                score++;
-                resultElement.textContent = "¡Correcto! Has adivinado el determinante.";
-            } else {
-                resultElement.textContent = `Incorrecto. El determinante era: ${determinant}`;
-            }
+    // Comprobar la respuesta
+    const resultElement = document.getElementById("result");
+    if (guess === determinant) {
+        score++;
+        resultElement.textContent = "¡Correcto! Has adivinado el determinante.";
+    } else {
+        resultElement.textContent = `Incorrecto. El determinante era: ${determinant}`;
+    }
 
-            // Actualizar los puntos
-            const scoreElement = document.getElementById("score");
-            scoreElement.textContent = `Puntos: ${score}`;
-        }
+    // Actualizar los puntos
+    const scoreElement = document.getElementById("score");
+    scoreElement.textContent = `Puntos: ${score}`;
+
+    // Cambiar valores de la matriz aleatoriamente
+    document.getElementById("cell-0-0").value = Math.floor(Math.random() * 21) - 10;
+    document.getElementById("cell-0-1").value = Math.floor(Math.random() * 21) - 10;
+    document.getElementById("cell-1-0").value = Math.floor(Math.random() * 21) - 10;
+    document.getElementById("cell-1-1").value = Math.floor(Math.random() * 21) - 10;
+}
     </script>
 </body>
 </html>
